@@ -13,8 +13,9 @@ ADD ssh_config /root/.ssh/config
 
 ADD nginx-default-site /etc/nginx/sites-available/default
 
-RUN ln -s /usr/sbin/nginx /etc/my_init.d/01_nginx
+ADD first_exec.sh /etc/my_init.d/01_first_exec
 
-ADD git_update.sh /etc/my_init.d/02_git_update
+RUN mkdir -p /etc/service/nginx
+ADD git_update.sh /etc/service/nginx/run
 
 
